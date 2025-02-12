@@ -2,25 +2,21 @@ from django.contrib.auth.models import AbstractUser
 from django.db import models
 
 class User(AbstractUser):
-    role = models.CharField(
-        max_length=50, 
-        choices=[('admin', 'Admin'), ('user', 'User')],
-        default='user'
-    )
+    ROLE_CHOICES = [
+        ('admin', 'Admin'),
+        ('moderator', 'Moderator'),
+        ('user', 'User'),
+    ]
+    role = models.CharField(max_length=10, choices=ROLE_CHOICES, default='user')
 
-class Category(models.Model):
-    name = models.CharField(max_length=100)
-    description = models.TextField(blank=True)
-
+    def __str__(self):
+        return self.username
 class Resource(models.Model):
-    title = models.CharField(max_length=255)
+    title = models.CharField(max_length=100)
     description = models.TextField()
-    file = models.FileField(upload_to='resources/')
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    created_at = models.DateTimeField(auto_now_add=True)
 
-class Comment(models.Model):
-    resource = models.ForeignKey(Resource, on_delete=models.CASCADE, related_name='comments')
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    content = models.TextField()
-    created_at = models.DateTimeField(auto_now_add=True)
+    class Meta:
+        permissions = [
+            ("can_publish", "Can publish resources"),
+            ("can_moderate", "Can moderate comments"),
+        ]
