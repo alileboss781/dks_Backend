@@ -24,22 +24,22 @@ SECRET_KEY = 'django-insecure-_cyt7j&=*e1ctvt(s)6!4wa22r8h#1(-^dolrusyzl8tf!xlpw
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+
 
 # Application definition
 INSTALLED_APPS = [
-    'rest_framework',
-    'rest_framework_simplejwt',  # JWT pour l'authentification
+    'mon_app',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'corsheaders',
     'django.contrib.staticfiles',
-    'mon_app',
-
-
+    'rest_framework',
+    'rest_framework_simplejwt',  # JWT pour l'authentification
+    'corsheaders',
 ]
 
 

@@ -22,6 +22,10 @@ class Ressource(models.Model):
     def __str__(self):
         return self.titre
 
+    class Meta:
+        verbose_name = "Ressource"
+        verbose_name_plural = "Ressources"
+
 
 class Commentaire(models.Model):
     contenu = models.TextField()
@@ -31,3 +35,7 @@ class Commentaire(models.Model):
 
     def __str__(self):
         return f"Commentaire par {self.auteur.username} sur {self.ressource.titre}"
+
+    class Meta:
+        verbose_name = "Commentaire"
+        verbose_name_plural = "Commentaires"
