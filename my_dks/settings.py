@@ -33,22 +33,16 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'corsheaders',
     'django.contrib.staticfiles',
-    'rest_framework',
-    'rest_framework_simplejwt',
-    'corsheaders',  # Ajouter django-cors-headers ici
     'mon_app',
-    
-]
+    ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-<<<<<<< HEAD
-    'corsheaders.middleware.CorsMiddleware',  # Ajouter ici
-=======
     'corsheaders.middleware.CorsMiddleware',  # Ajout du middleware ici
->>>>>>> 993700dd417cd5191336ee52de73a85e07dc52f5
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -133,15 +127,20 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# Indiquez le modèle utilisateur personnalisé
+AUTH_USER_MODEL = 'mon_app.User'
 
-REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
-    ),
+# Logs pour le débogage
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'root': {
+        'handlers': ['console'],
+        'level': 'DEBUG',
+    },
 }
-
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:3000",  # Permet à React d'accéder à ton API Django
-]
-
-
