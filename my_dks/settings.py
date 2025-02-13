@@ -38,21 +38,13 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'corsheaders',  # Ajouter django-cors-headers ici
     'mon_app',
-<<<<<<< HEAD
-    
-=======
-    'corsheaders',  # Ajout de corsheaders
->>>>>>> 993700dd417cd5191336ee52de73a85e07dc52f5
+
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-<<<<<<< HEAD
     'corsheaders.middleware.CorsMiddleware',  # Ajouter ici
-=======
-    'corsheaders.middleware.CorsMiddleware',  # Ajout du middleware ici
->>>>>>> 993700dd417cd5191336ee52de73a85e07dc52f5
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
