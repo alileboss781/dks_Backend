@@ -36,22 +36,18 @@ INSTALLED_APPS = [
     'corsheaders',
     'django.contrib.staticfiles',
     'mon_app',
-<<<<<<< HEAD
+
 
 ]
-=======
-    ]
 
->>>>>>> fea5488b0c5a277ea07a582f3777cfdf58cc56c7
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-<<<<<<< HEAD
+
     'corsheaders.middleware.CorsMiddleware',  # Ajouter ici
-=======
-    'corsheaders.middleware.CorsMiddleware',  # Ajout du middleware ici
->>>>>>> fea5488b0c5a277ea07a582f3777cfdf58cc56c7
+
+
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
