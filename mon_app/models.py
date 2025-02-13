@@ -1,5 +1,5 @@
-from django.contrib.auth.models import AbstractUser, Group, Permission
 from django.db import models
+from django.contrib.auth.models import AbstractUser
 
 class User(AbstractUser):
     ROLE_CHOICES = [
@@ -9,20 +9,25 @@ class User(AbstractUser):
     ]
     role = models.CharField(max_length=10, choices=ROLE_CHOICES, default='user')
 
-    groups = models.ManyToManyField(
-        Group,
-        related_name="custom_user_set",  # Nom unique pour éviter les conflits
-        blank=True,
-        help_text="Les groupes auxquels cet utilisateur appartient.",
-        verbose_name="groupes"
-    )
-    user_permissions = models.ManyToManyField(
-        Permission,
-        related_name="custom_user_permissions",  # Nom unique pour éviter les conflits
-        blank=True,
-        help_text="Les permissions spécifiques à cet utilisateur.",
-        verbose_name="permissions utilisateur"
-    )
-
     def __str__(self):
         return self.username
+
+
+class Ressource(models.Model):
+    titre = models.CharField(max_length=255)
+    contenu = models.TextField()
+    date_creation = models.DateTimeField(auto_now_add=True)
+    auteur = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.titre
+
+
+class Commentaire(models.Model):
+    contenu = models.TextField()
+    date_creation = models.DateTimeField(auto_now_add=True)
+    ressource = models.ForeignKey(Ressource, on_delete=models.CASCADE, related_name='commentaires')
+    auteur = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f"Commentaire par {self.auteur.username} sur {self.ressource.titre}"
