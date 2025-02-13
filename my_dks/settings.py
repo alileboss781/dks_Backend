@@ -38,11 +38,7 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'corsheaders',  # Ajouter django-cors-headers ici
     'mon_app',
-<<<<<<< HEAD
     
-=======
-    'corsheaders',  # Ajout de corsheaders
->>>>>>> 993700dd417cd5191336ee52de73a85e07dc52f5
 ]
 
 MIDDLEWARE = [
