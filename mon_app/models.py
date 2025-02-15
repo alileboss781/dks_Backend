@@ -9,8 +9,6 @@ class User(AbstractUser):
     ]
     role = models.CharField(max_length=10, choices=ROLE_CHOICES, default='user')
 
-    def __str__(self):
-        return self.username
 
 
 class Ressource(models.Model):
