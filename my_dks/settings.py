@@ -61,6 +61,8 @@ CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',  # URL du frontend React
 ]
 
+
+
 ROOT_URLCONF = 'my_dks.urls'
 
 TEMPLATES = [
@@ -147,7 +149,7 @@ REST_FRAMEWORK = {
 }
 
 
-# Logs pour le débogage
+#Logs pour le débogage
 LOGGING = {
     'version': 1,
     'disable_existing_loggers': False,
@@ -161,3 +163,5 @@ LOGGING = {
         'level': 'DEBUG',
     },
 }
+
+

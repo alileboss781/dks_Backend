@@ -15,16 +15,24 @@ class UserSerializer(serializers.ModelSerializer):
         return f"{obj.first_name} {obj.last_name}" if obj.first_name and obj.last_name else "Nom complet indisponible"
 
 
+
 class CommentaireSerializer(serializers.ModelSerializer):
-    auteur = UserSerializer(read_only=True)
-    time_since_creation = serializers.SerializerMethodField()
+    reponses = serializers.SerializerMethodField()  # Champ pour afficher les réponses
+    time_since_creation = serializers.SerializerMethodField()  # Champ pour afficher le temps écoulé
 
     class Meta:
         model = Commentaire
-        fields = '__all__'
+        fields = ['id', 'contenu', 'date_creation', 'auteur', 'ressource', 'parent', 'reponses', 'time_since_creation']
+
+    def get_reponses(self, obj):
+        """Retourne les réponses associées au commentaire."""
+        reponses = obj.reponses.all()  # Récupérer toutes les réponses
+        return CommentaireSerializer(reponses, many=True).data if reponses.exists() else []
 
     def get_time_since_creation(self, obj):
+        """Retourne le temps écoulé depuis la création."""
         return timesince(obj.date_creation)
+
 
 
 class RessourceSerializer(serializers.ModelSerializer):

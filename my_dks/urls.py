@@ -20,6 +20,9 @@ from django.urls import path, include
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from mon_app import views
 from rest_framework.routers import DefaultRouter
+from mon_app.views import DeleteCommentView, DeleteResourceView
+
+
 
 
 urlpatterns = [
@@ -33,9 +36,16 @@ urlpatterns = [
     # Inclure les routes de l'application mon_app
     path('api/', include('mon_app.urls')),  # Remarquez que cela inclut mon_app.urls
     path('register/', views.RegisterView.as_view(), name='register'),
+    path("api/register/", views.RegisterView.as_view(), name="register"),
+
     path('login/', views.LoginView.as_view(), name='login'),
     path('publish/', views.PublishResourceView.as_view(), name='publish_resource'),
+    path('publish-comment/', views.PublishCommentView.as_view(), name='publish_comment'),
+     path('api/publish-comment/', views.PublishCommentView.as_view(), name='publish_comment'),
    # path('api/', include(router.urls)),
+
+   path('api/delete-comment/', DeleteCommentView.as_view(), name='delete-comment'),
+   path('api/delete-resource/', DeleteResourceView.as_view(), name='delete-resource'),
 ]
 
 

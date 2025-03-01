@@ -1,0 +1,58 @@
+ERROR 2025-02-20 09:17:09,645 log Internal Server Error: /api/register/
+Traceback (most recent call last):
+  File "C:\Users\alibo\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\alibo\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\alibo\venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\alibo\venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\alibo\venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\alibo\venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\alibo\venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\alibo\venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\alibo\my_dks\mon_app\views.py", line 50, in post
+    if User.objects.filter(username=username).exists():
+       ^^^^^^^^^^^^
+  File "C:\Users\alibo\venv\Lib\site-packages\django\db\models\manager.py", line 196, in __get__
+    raise AttributeError(
+    ...<5 lines>...
+    )
+AttributeError: Manager isn't available; 'auth.User' has been swapped for 'mon_app.User'
+ERROR 2025-02-20 09:17:09,658 basehttp "POST /api/register/ HTTP/1.1" 500 94854
+ERROR 2025-02-20 09:30:43,626 log Internal Server Error: /register/
+Traceback (most recent call last):
+  File "C:\Users\alibo\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+  File "C:\Users\alibo\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\alibo\venv\Lib\site-packages\django\views\decorators\csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+  File "C:\Users\alibo\venv\Lib\site-packages\django\views\generic\base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\alibo\venv\Lib\site-packages\rest_framework\views.py", line 509, in dispatch
+    response = self.handle_exception(exc)
+  File "C:\Users\alibo\venv\Lib\site-packages\rest_framework\views.py", line 469, in handle_exception
+    self.raise_uncaught_exception(exc)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "C:\Users\alibo\venv\Lib\site-packages\rest_framework\views.py", line 480, in raise_uncaught_exception
+    raise exc
+  File "C:\Users\alibo\venv\Lib\site-packages\rest_framework\views.py", line 506, in dispatch
+    response = handler(request, *args, **kwargs)
+  File "C:\Users\alibo\my_dks\mon_app\views.py", line 50, in post
+    if User.objects.filter(username=username).exists():
+       ^^^^^^^^^^^^
+  File "C:\Users\alibo\venv\Lib\site-packages\django\db\models\manager.py", line 196, in __get__
+    raise AttributeError(
+    ...<5 lines>...
+    )
+AttributeError: Manager isn't available; 'auth.User' has been swapped for 'mon_app.User'
+ERROR 2025-02-20 09:30:43,656 basehttp "POST /register/ HTTP/1.1" 500 94453
